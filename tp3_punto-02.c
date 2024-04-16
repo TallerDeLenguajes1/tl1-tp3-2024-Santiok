@@ -13,11 +13,15 @@ void mostrarMatriz(int matriz[ANIO][MES]);
 
 void sacarPromedio(int matriz[ANIO][MES]);
 
+//Funcion para los valores minimo y maximo.
+
+void valoresMinMax(int matriz[ANIO][MES]);
+
 int main(void){
 
     int matriz[ANIO][MES];
 
-    //srand(time(NULL));
+    srand(time(NULL));
 
     for (int i = 0; i < ANIO; i++)
     {
@@ -31,6 +35,8 @@ int main(void){
     mostrarMatriz(matriz);
 
     sacarPromedio(matriz);
+
+    valoresMinMax(matriz);
     
 }
 
@@ -69,4 +75,55 @@ void sacarPromedio(int matriz[ANIO][MES]){
         promedio = 0;
         k++;
     }
+}
+
+//FUNCION PARA VALORES MINIMO Y MAXIMO.
+
+void valoresMinMax(int matriz[ANIO][MES]){
+
+    int max = 0, min = 0, cont = 0, mesM, anioM, mesMax, anioMax;
+
+    for (int i = 0; i < ANIO; i++)
+    {
+        for (int j = 0; j < MES; j++)
+        {
+            if (cont == 0)
+            {
+                max = matriz[i][j];
+                min = matriz[i][j];
+
+                mesM = j + 1;
+                anioM = i + 1;
+                mesMax = j + 1;
+                anioMax = i + 1;
+
+                cont++;
+            } else
+            {
+                if (max < matriz[i][j])
+                {
+                    max = matriz[i][j];
+
+                    mesMax = j + 1;
+                    anioMax = i + 1;
+
+                } else
+                {
+                    if (min > matriz[i][j])
+                    {
+                        min = matriz[i][j];
+
+                        mesM = j + 1;
+                        anioM = i + 1;
+                    }
+                    
+                }
+                
+                
+            }
+            
+            
+        }  
+    }
+    printf("\n El valor mas grande es: %d \n Mes: %d \n Año: %d \n\n El valor mas chico es: %d \n Mes: %d \n Año: %d", max, mesMax, anioMax, min, mesM, anioM);
 }
