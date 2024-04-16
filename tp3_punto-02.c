@@ -9,6 +9,10 @@
 
 void mostrarMatriz(int matriz[ANIO][MES]);
 
+//Funcion para el promedio.
+
+void sacarPromedio(int matriz[ANIO][MES]);
+
 int main(void){
 
     int matriz[ANIO][MES];
@@ -25,8 +29,12 @@ int main(void){
     }
 
     mostrarMatriz(matriz);
+
+    sacarPromedio(matriz);
     
 }
+
+//FUNCION PARA MOSTRAR LA MATRIZ.
 
 void mostrarMatriz(int matriz[ANIO][MES]){
 
@@ -39,4 +47,26 @@ void mostrarMatriz(int matriz[ANIO][MES]){
         printf("\n");
     }
     
+}
+
+//FUNCION PARA SACAR EL PROMEDIO.
+
+void sacarPromedio(int matriz[ANIO][MES]){
+
+    int promedio = 0, k = 1;
+
+    for (int i = 0; i < ANIO; i++)
+    {
+        for (int j = 0; j < MES; j++)
+        {
+            promedio = promedio + matriz[i][j];
+        }  
+
+        promedio = promedio/12;
+
+        printf("\n Promedio del año %d : %d",k, promedio);
+
+        promedio = 0;
+        k++;
+    }
 }
