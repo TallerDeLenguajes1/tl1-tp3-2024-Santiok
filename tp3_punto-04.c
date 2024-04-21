@@ -48,13 +48,16 @@ int main(void){
 
     int aux;
 
-    char *tiposProductos[] = {"Galletas", "Snack", "Cigarrillos", "Caramelos", "Bebidas"};
-
     clientes *cliente = malloc(5 * sizeof(clientes));
 
-    printf("\nIngrese la cantidad de clientes (maximo cinco personas):\n");
-    scanf("%d", &aux);
+    do
+    {
 
+        printf("\nIngrese la cantidad de clientes (maximo cinco personas):\n");
+        scanf("%d", &aux);
+
+    } while (aux > 5);
+    
     //Cargo los clientes.
 
     for (int i = 0; i < aux; i++)
@@ -70,6 +73,14 @@ int main(void){
     }
     
     //Libero la memoria.
+
+    for (int i = 0; i < aux; i++)
+    {
+        free(cliente[i].nombreCliente);
+        free(cliente[i].productos);
+    }
+    free(cliente);
+    
     
 
 }
@@ -166,5 +177,4 @@ void mostrarProductos(clientes cliente){
     }
 
     printf("\nEl total a pagar es: %f\n\n", suma);
-    
 }
